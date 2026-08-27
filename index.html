@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A public case study of a declarative control plane for autonomous agent work.">
+  <meta name="theme-color" content="#07110f">
+  <title>Agent Control Plane — Intent that converges</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="#top" aria-label="Agent Control Plane home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>Agent Control Plane</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+      <span class="sr-only">Toggle navigation</span><span></span><span></span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary" data-nav>
+      <a href="#architecture">Architecture</a>
+      <a href="#model">Model</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#roadmap">Roadmap</a>
+      <a class="nav-cta" href="https://github.com/spagno-lab/agent-control-plane-showcase">View source</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero section" id="top">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="eyebrow reveal"><span class="status-dot"></span> Public architecture case study</div>
+      <h1 class="reveal">Give agents an outcome.<br><em>Make reality converge.</em></h1>
+      <p class="hero-copy reveal">A declarative control plane turns a human goal into bounded, observable work—then verifies the outside world before it calls the job done.</p>
+      <div class="hero-actions reveal">
+        <a class="button primary" href="#architecture">Explore the system <span aria-hidden="true">↘</span></a>
+        <a class="button secondary" href="#evidence">See validated use cases</a>
+      </div>
+      <div class="command-card reveal" aria-label="Example interaction">
+        <div class="command-top"><span></span><span></span><span></span><small>human → control plane</small></div>
+        <code><span>$</span> Reach the showcase Goal</code>
+        <div class="command-response"><span>✓</span> Observe → plan → dispatch → verify → Ready</div>
+      </div>
+      <div class="signal-strip reveal" aria-label="Core qualities">
+        <span>Declarative intent</span><span>Leased ownership</span><span>External verification</span><span>Durable audit</span>
+      </div>
+    </section>
+
+    <section class="section problem" id="problem">
+      <div class="section-label">01 / The problem</div>
+      <div class="split">
+        <h2>Prompts start work.<br><span>They do not govern it.</span></h2>
+        <div>
+          <p class="lede">Autonomous execution needs more than a clever model. It needs durable intent, explicit ownership, bounded retries, live feedback, and an independent answer to one hard question: <strong>did the world actually change?</strong></p>
+          <div class="contrast-grid">
+            <article><b>Prompt loop</b><p>Ephemeral instructions, implicit state, success reported by the worker.</p></article>
+            <article class="accent"><b>Control loop</b><p>Versioned intent, observed state, recoverable work, success verified externally.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section architecture" id="architecture">
+      <div class="section-label">02 / Architecture</div>
+      <div class="section-heading">
+        <h2>A control plane around the intelligence.</h2>
+        <p>The model reasons and executes. Deterministic machinery owns scheduling, leases, lifecycle, truth, and convergence.</p>
+      </div>
+      <div class="architecture-map" role="img" aria-label="Flow from human intent through Goal controller, AgentJob scheduler and worker to external systems, with observation returning to the controller">
+        <div class="map-node human"><small>Intent</small><b>Human</b><span>“Reach this outcome”</span></div>
+        <div class="map-arrow" aria-hidden="true">→</div>
+        <div class="map-core">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <small>Control plane</small><b>Goal controller</b><span>Observe · Compare · Reconcile</span>
+        </div>
+        <div class="map-arrow" aria-hidden="true">→</div>
+        <div class="map-stack">
+          <div class="map-node"><small>Work unit</small><b>AgentJob</b><span>Lease · Retry · Checkpoint</span></div>
+          <div class="map-node"><small>Scheduler</small><b>Worker match</b><span>Capability · Quota · Health</span></div>
+        </div>
+        <div class="map-arrow" aria-hidden="true">→</div>
+        <div class="map-node reality"><small>Execution</small><b>External reality</b><span>Code · APIs · Infrastructure</span></div>
+        <div class="feedback-line"><span>authoritative observation returns to the Goal</span></div>
+      </div>
+      <div class="principles">
+        <article><span>01</span><h3>Level-based</h3><p>Every reconcile starts from current desired and observed state—not from assumed history.</p></article>
+        <article><span>02</span><h3>Idempotent</h3><p>Repeated runs converge safely instead of multiplying side effects.</p></article>
+        <article><span>03</span><h3>Fail-closed</h3><p>Ambiguous ownership or unverifiable state becomes a visible block, never a guess.</p></article>
+        <article><span>04</span><h3>Recoverable</h3><p>Leases, checkpoints, and bounded retries let another eligible worker continue.</p></article>
+      </div>
+    </section>
+
+    <section class="section model" id="model">
+      <div class="section-label">03 / Declarative model</div>
+      <div class="section-heading">
+        <h2>Goals evolve. Jobs remain evidence.</h2>
+        <p>A Goal describes the destination. A Job is one bounded attempt to move reality toward one Goal generation.</p>
+      </div>
+      <div class="model-grid">
+        <article class="definition goal-card"><span class="definition-tag">Desired state</span><h3>Goal</h3><p>Outcome, success criteria, constraints, generation, and status conditions.</p><code>Generation: 3</code></article>
+        <article class="definition"><span class="definition-tag">Execution</span><h3>AgentJob</h3><p>A scoped unit of work with capability requirements, claim lease, retries, and result pointers.</p><code>Status: running</code></article>
+        <article class="definition"><span class="definition-tag">Truth</span><h3>Observed Generation</h3><p>The latest generation whose success criteria were independently verified in external reality.</p><code>Observed: 2</code></article>
+      </div>
+      <div class="generation-demo">
+        <div class="generation-copy">
+          <span class="kicker">Two nested loops</span>
+          <h3>Machines converge reality.<br>Humans evolve intent.</h3>
+          <p>A technically Ready Goal is not frozen forever. Human judgment can refine the desired state, increment the Generation, and trigger only the smallest necessary delta.</p>
+        </div>
+        <ol class="timeline">
+          <li class="done"><span>G1</span><div><b>Initial intent</b><small>Machine loop converges</small></div><em>Ready</em></li>
+          <li class="done"><span>G2</span><div><b>Human refinement</b><small>Narrow reconcile job</small></div><em>Ready</em></li>
+          <li class="active"><span>G3</span><div><b>New desired state</b><small>Observed generation remains 2</small></div><em>Reconciling</em></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section loops" id="loops">
+      <div class="section-label">04 / End-to-end flow</div>
+      <h2>One command. Two feedback loops.</h2>
+      <div class="loop-grid">
+        <article>
+          <div class="loop-number">A</div><h3>Machine reconcile loop</h3>
+          <ol><li>Read desired state</li><li>Observe authoritative reality</li><li>Compare and create minimal work</li><li>Dispatch to an eligible worker</li><li>Re-observe after completion</li><li>Set Ready only when verified</li></ol>
+        </article>
+        <article>
+          <div class="loop-number">B</div><h3>Human intent loop</h3>
+          <ol><li>Review the converged outcome</li><li>Apply qualitative judgment</li><li>Refine success criteria or constraints</li><li>Increment Goal generation</li><li>Preserve prior Jobs as history</li><li>Reconcile only the delta</li></ol>
+        </article>
+      </div>
+    </section>
+
+    <section class="section evidence" id="evidence">
+      <div class="section-label">05 / Validated patterns</div>
+      <div class="section-heading"><h2>Proven on real work, not a slide deck.</h2><p>The prototype validated the operating model through small, externally observable outcomes.</p></div>
+      <div class="case-grid">
+        <article><span class="case-index">01</span><div class="case-icon">⌁</div><h3>Minimal-prompt autonomy</h3><p>A Goal-oriented request is enough to retrieve context, select existing work, execute, and verify—without asking the human to shuttle prompts between agents.</p><footer><span>Intent → Ready</span><b>Validated</b></footer></article>
+        <article><span class="case-index">02</span><div class="case-icon">◇</div><h3>Repository bootstrap</h3><p>Public or private repository policy becomes explicit desired state: visibility, default branch, merge behavior, protections, and verification.</p><footer><span>Policy as state</span><b>Validated</b></footer></article>
+        <article><span class="case-index">03</span><div class="case-icon">↻</div><h3>Narrow generation reconcile</h3><p>When intent changes, a new Job addresses only the delta. Prior terminal work stays immutable as operational evidence.</p><footer><span>Smallest safe change</span><b>Validated</b></footer></article>
+      </div>
+    </section>
+
+    <section class="section future" id="future">
+      <div class="section-label">06 / Runtime feedback</div>
+      <div class="future-panel">
+        <div><span class="kicker">Target architecture</span><h2>Durable lifecycle.<br><em>Live execution signal.</em></h2><p>Final Goal and Job state form the audit projection. A deterministic runtime bridge provides low-latency, cursor-addressable events while work is still running.</p></div>
+        <div class="event-stream" aria-label="Example structured runtime events">
+          <div><time>00:00</time><span class="event-dot green"></span><code>run_started</code><small>worker assigned</small></div>
+          <div><time>00:07</time><span class="event-dot blue"></span><code>workspace_prepared</code><small>branch isolated</small></div>
+          <div><time>01:42</time><span class="event-dot violet"></span><code>checkpoint</code><small>validation passed</small></div>
+          <div><time>02:18</time><span class="event-dot green"></span><code>artifact</code><small>result available</small></div>
+          <div class="stream-cursor"><span></span> live cursor</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section safety" id="safety">
+      <div class="section-label">07 / Safety boundary</div>
+      <div class="split"><h2>Autonomy with<br><span>hard edges.</span></h2><div class="safety-list">
+        <article><i>01</i><div><h3>Least authority</h3><p>Workers receive only the capabilities required for their bounded Job.</p></div></article>
+        <article><i>02</i><div><h3>Leased ownership</h3><p>Claim tokens and expiry prevent stale workers from mutating shared state.</p></div></article>
+        <article><i>03</i><div><h3>Approval gates</h3><p>Risky or irreversible actions wait for explicit human authorization.</p></div></article>
+        <article><i>04</i><div><h3>Publication boundary</h3><p>Public material is a sanitized projection—not a mirror of operational systems.</p></div></article>
+      </div></div>
+    </section>
+
+    <section class="section roadmap" id="roadmap">
+      <div class="section-label">08 / Roadmap</div>
+      <div class="section-heading"><h2>From functional prototype to operator.</h2><p>The concepts map directly onto a Kubernetes-native control plane without changing the human interaction model.</p></div>
+      <div class="roadmap-track">
+        <article class="current"><span>Now</span><h3>Functional prototype</h3><p>Goals, Jobs, Workers, leases, events, and external verification.</p></article>
+        <article><span>Next</span><h3>Runtime bridge</h3><p>Dispatch, status, structured event stream, tail, cancellation.</p></article>
+        <article><span>Then</span><h3>Kubernetes Operator</h3><p>Goal, AgentJob, and Worker resources with level-based controllers.</p></article>
+        <article><span>Later</span><h3>Policy & scale</h3><p>Transactional scheduling, richer approvals, multi-cluster execution.</p></article>
+      </div>
+    </section>
+
+    <section class="section closing">
+      <span class="kicker">The interface is the outcome</span>
+      <h2>Stop managing prompts.<br><em>Start declaring intent.</em></h2>
+      <a class="button primary" href="https://github.com/spagno-lab/agent-control-plane-showcase">Explore the source <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span>Agent Control Plane</span><p>A sanitized public architecture showcase.</p><a href="#top">Back to top ↑</a></footer>
+</body>
+</html>
