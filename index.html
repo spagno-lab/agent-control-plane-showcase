@@ -40,8 +40,8 @@
       </div>
       <div class="command-card reveal" aria-label="Example interaction">
         <div class="command-top"><span></span><span></span><span></span><small>human → control plane</small></div>
-        <code><span>$</span> Reach the showcase Goal</code>
-        <div class="command-response"><span>✓</span> Observe → plan → dispatch → verify → Ready</div>
+        <code><span>$</span> Execute the bounded Job for this Goal</code>
+        <div class="command-response"><span>✓</span> Resolve → claim → observe → verify → Ready</div>
       </div>
       <div class="signal-strip reveal" aria-label="Core qualities">
         <span>Declarative intent</span><span>Leased ownership</span><span>External verification</span><span>Durable audit</span>
@@ -89,6 +89,10 @@
         <article><span>02</span><h3>Idempotent</h3><p>Repeated runs converge safely instead of multiplying side effects.</p></article>
         <article><span>03</span><h3>Fail-closed</h3><p>Ambiguous ownership or unverifiable state becomes a visible block, never a guess.</p></article>
         <article><span>04</span><h3>Recoverable</h3><p>Leases, checkpoints, and bounded retries let another eligible worker continue.</p></article>
+      </div>
+      <div class="integrity-panel">
+        <div><span class="kicker">Validated admission safety</span><h3>References are authority, not hints.</h3></div>
+        <p>A worker must resolve the requested Job in the canonical queue before it acts. When a requested reference was absent, execution failed closed: no invented scope, no inferred approval, and zero external mutation. A versioned Goal and bounded Job were created before work resumed.</p>
       </div>
     </section>
 
@@ -139,13 +143,23 @@
         <article><span class="case-index">01</span><div class="case-icon">⌁</div><h3>Minimal-prompt autonomy</h3><p>A Goal-oriented request is enough to retrieve context, select existing work, execute, and verify—without asking the human to shuttle prompts between agents.</p><footer><span>Intent → Ready</span><b>Validated</b></footer></article>
         <article><span class="case-index">02</span><div class="case-icon">◇</div><h3>Repository bootstrap</h3><p>Public or private repository policy becomes explicit desired state: visibility, default branch, merge behavior, protections, and verification.</p><footer><span>Policy as state</span><b>Validated</b></footer></article>
         <article><span class="case-index">03</span><div class="case-icon">↻</div><h3>Narrow generation reconcile</h3><p>When intent changes, a new Job addresses only the delta. Prior terminal work stays immutable as operational evidence.</p><footer><span>Smallest safe change</span><b>Validated</b></footer></article>
+        <article><span class="case-index">04</span><div class="case-icon">⊘</div><h3>Fail-closed reference integrity</h3><p>A missing Job cannot be reconstructed from conversation or context. The worker blocks visibly and performs zero external mutation until canonical authority exists.</p><footer><span>Missing reference → no action</span><b>Validated</b></footer></article>
+        <article><span class="case-index">05</span><div class="case-icon">✓</div><h3>Verified no-op reconcile</h3><p>Success does not require manufacturing a change. When authoritative evidence proves reality already satisfies intent, the correct result is zero mutation plus explicit verification.</p><footer><span>Already converged</span><b>Validated</b></footer></article>
+        <article><span class="case-index">06</span><div class="case-icon">⌁</div><h3>Resilient evidence</h3><p>Degraded access stays visible. Independent APIs, bounded logs, probes, and workload state may jointly satisfy the same evidence bar without turning inference into truth.</p><footer><span>Multi-source verification</span><b>Validated</b></footer></article>
+      </div>
+      <div class="evidence-note">
+        <div><span class="kicker">Append-only correction</span><h3>A wrong conclusion is corrected, not erased.</h3></div>
+        <div>
+          <p>During one verification Job a privileged access attempt failed and was reported as unusable credentials. The credentials were valid; the attempt had used the wrong account. The Job still converged, because independent APIs, bounded logs, network probes and workload state satisfied the evidence bar without that access path.</p>
+          <p>The original record stays intact and a later correction is appended on top of it. Misclassifying a working credential is itself a defect, so the audit trail must show the failed attempt, the reason it failed, and the corrected conclusion.</p>
+        </div>
       </div>
     </section>
 
     <section class="section future" id="future">
-      <div class="section-label">06 / Runtime feedback</div>
+      <div class="section-label">06 / Runtime feedback target</div>
       <div class="future-panel">
-        <div><span class="kicker">Target architecture</span><h2>Durable lifecycle.<br><em>Live execution signal.</em></h2><p>Final Goal and Job state form the audit projection. A deterministic runtime bridge provides low-latency, cursor-addressable events while work is still running.</p></div>
+        <div><span class="kicker">Target architecture · not yet complete</span><h2>Durable lifecycle.<br><em>Live execution signal.</em></h2><p>Today, durable Goal, Job, Run, and event state forms the audit projection. The next deterministic layers will replace interim manual Job relay with event-driven dispatch, then provide low-latency, cursor-addressable runtime feedback.</p></div>
         <div class="event-stream" aria-label="Example structured runtime events">
           <div><time>00:00</time><span class="event-dot green"></span><code>run_started</code><small>worker assigned</small></div>
           <div><time>00:07</time><span class="event-dot blue"></span><code>workspace_prepared</code><small>branch isolated</small></div>
@@ -163,6 +177,8 @@
         <article><i>02</i><div><h3>Leased ownership</h3><p>Claim tokens and expiry prevent stale workers from mutating shared state.</p></div></article>
         <article><i>03</i><div><h3>Approval gates</h3><p>Risky or irreversible actions wait for explicit human authorization.</p></div></article>
         <article><i>04</i><div><h3>Publication boundary</h3><p>Public material is a sanitized projection—not a mirror of operational systems.</p></div></article>
+        <article><i>05</i><div><h3>Operational contract</h3><p>Capabilities, audit mode, reversible-change authority, protected control paths, approvals, verification, and rollback are explicit Job fields.</p></div></article>
+        <article><i>06</i><div><h3>Deterministic workspaces</h3><p>Each Job runs in an isolated, reproducible repository workspace on its own branch, so concurrent work cannot collide and terminal Job history stays immutable.</p></div></article>
       </div></div>
     </section>
 
@@ -171,9 +187,9 @@
       <div class="section-heading"><h2>From functional prototype to operator.</h2><p>The concepts map directly onto a Kubernetes-native control plane without changing the human interaction model.</p></div>
       <div class="roadmap-track">
         <article class="current"><span>Now</span><h3>Functional prototype</h3><p>Goals, Jobs, Workers, leases, events, and external verification.</p></article>
-        <article><span>Next</span><h3>Runtime bridge</h3><p>Dispatch, status, structured event stream, tail, cancellation.</p></article>
-        <article><span>Then</span><h3>Kubernetes Operator</h3><p>Goal, AgentJob, and Worker resources with level-based controllers.</p></article>
-        <article><span>Later</span><h3>Policy & scale</h3><p>Transactional scheduling, richer approvals, multi-cluster execution.</p></article>
+        <article><span>Next</span><h3>Event-driven dispatcher</h3><p>Deterministic admission, wake-up, claim context, and automatic worker launch.</p></article>
+        <article><span>Then</span><h3>Runtime Feedback Bridge</h3><p>Timestamped structured events, status, tail, artifacts, and cancellation.</p></article>
+        <article><span>Later</span><h3>Kubernetes Operator</h3><p>Goal, AgentJob, and Worker resources with level-based controllers.</p></article>
       </div>
     </section>
 
