@@ -12,6 +12,6 @@ It is not runtime authority, deployment state, or an operational audit store.
 - Do not describe Goal-level convergence, clean-room enrollment, a Kubernetes
   operator, or low-latency runtime feedback as live unless independently
   verified evidence exists.
-- All GitHub Actions workload jobs use self-hosted Linux runners and explicit
-  digest-pinned job containers; the host contract is Runner + Linux + Docker.
-
+- **TARGET:** GitHub Actions workload jobs use self-hosted Linux runners and
+  digest-pinned job containers. The current Pages workflow remains
+  GitHub-hosted until this public repository has an eligible self-hosted runner.
