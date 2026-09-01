@@ -33,7 +33,7 @@
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="eyebrow reveal"><span class="status-dot"></span> Public architecture case study</div>
       <h1 class="reveal">Give agents an outcome.<br><em>Make reality converge.</em></h1>
-      <p class="hero-copy reveal">A declarative control plane turns a human goal into bounded, observable work. Database-backed execution authority exists today; independent Goal convergence remains an explicit target.</p>
+      <p class="hero-copy reveal">A declarative control plane turns a human goal into bounded, observable work. Database-backed execution authority and deterministic Goal reconciliation exist today; external real-agent convergence evidence remains explicitly gated.</p>
       <div class="hero-actions reveal">
         <a class="button primary" href="#architecture">Explore the system <span aria-hidden="true">↘</span></a>
         <a class="button secondary" href="#evidence">See the evidence boundary</a>
@@ -66,14 +66,14 @@
       <div class="section-label">02 / Architecture</div>
       <div class="section-heading">
         <h2>A control plane around the intelligence.</h2>
-        <p>The model reasons and executes. PostgreSQL-backed machinery owns scheduling, claims, leases, fencing, retries, and lifecycle. A future controller will own independent Goal convergence.</p>
+        <p>The model reasons and executes. PostgreSQL-backed machinery owns scheduling, claims, leases, fencing, retries, lifecycle, and deterministic Goal reconciliation. The controller delegates reasoning to bounded planner Jobs and accepts only validated convergence evidence.</p>
       </div>
-      <div class="architecture-map" role="img" aria-label="Target flow from human intent through Goal reconciliation, AgentJob scheduling and Worker execution to external systems, with observation returning to the controller">
+      <div class="architecture-map" role="img" aria-label="Implemented flow from human intent through Goal reconciliation, AgentJob scheduling and Worker execution to external systems, with observation returning to the controller">
         <div class="map-node human"><small>Intent</small><b>Human</b><span>“Reach this outcome”</span></div>
         <div class="map-arrow" aria-hidden="true">→</div>
         <div class="map-core">
           <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-          <small>Target controller</small><b>Goal reconcile</b><span>Observe · Compare · Ready</span>
+          <small>Controller v1</small><b>Goal reconcile</b><span>Observe · Compare · Ready</span>
         </div>
         <div class="map-arrow" aria-hidden="true">→</div>
         <div class="map-stack">
@@ -122,7 +122,7 @@
     </section>
 
     <section class="section loops" id="loops">
-      <div class="section-label">04 / Target end-to-end flow</div>
+      <div class="section-label">04 / Implemented controller flow</div>
       <h2>One command. Two explicit loops.</h2>
       <div class="loop-grid">
         <article>
@@ -138,13 +138,13 @@
 
     <section class="section evidence" id="evidence">
       <div class="section-label">05 / Evidence boundary</div>
-      <div class="section-heading"><h2>Evidence without status inflation.</h2><p>Execution primitives are tested in source and deployed; Goal-level external convergence and clean-room live enrollment remain unverified targets.</p></div>
+      <div class="section-heading"><h2>Evidence without status inflation.</h2><p>Execution primitives and the deterministic GoalController are tested in source and deployed. Synthetic PostgreSQL convergence passes; an independently observed real-agent Goal remains an explicit verification gate.</p></div>
       <div class="case-grid">
         <article><span class="case-index">01</span><div class="case-icon">⌁</div><h3>Bounded runtime authority</h3><p>Goals, Jobs, Workers and Runs persist in PostgreSQL; assignments, claims and mutations are scope-checked rather than inferred from prompts.</p><footer><span>Intent → bounded work</span><b>Implemented</b></footer></article>
         <article><span class="case-index">02</span><div class="case-icon">◇</div><h3>Separated identity</h3><p>Worker and Orchestrator authority is explicit. ACP and Memory credentials are independently issued, hashed, scoped, rotated, and revoked.</p><footer><span>ACP bearer ≠ Memory bearer</span><b>Implemented</b></footer></article>
         <article><span class="case-index">03</span><div class="case-icon">↻</div><h3>Safe reassignment</h3><p>Leases, fencing tokens, checkpoints and deterministic retries reject stale mutation when work moves to a replacement Worker.</p><footer><span>Lease loss → stale rejection</span><b>Tested</b></footer></article>
         <article><span class="case-index">04</span><div class="case-icon">⊘</div><h3>Fail-closed reference integrity</h3><p>A missing Job cannot be reconstructed from conversation or context. The Worker blocks visibly and performs zero authorized ACP mutation until canonical authority exists.</p><footer><span>Missing reference → no authority</span><b>Tested</b></footer></article>
-        <article><span class="case-index">05</span><div class="case-icon">✓</div><h3>Independent Goal readiness</h3><p>The target controller will re-observe success criteria rather than promote a Worker completion report directly to Goal Ready.</p><footer><span>Worker report ≠ Goal Ready</span><b>Target</b></footer></article>
+        <article><span class="case-index">05</span><div class="case-icon">✓</div><h3>Independent Goal readiness</h3><p>The implemented controller re-observes through a bounded planner result and never promotes a Worker completion report directly to Goal Ready.</p><footer><span>Worker report ≠ Goal Ready</span><b>Implemented · synthetic verified</b></footer></article>
         <article><span class="case-index">06</span><div class="case-icon">⌁</div><h3>Durable shared context</h3><p>Memory Service provides versioned canonical keys, CAS, supersession and durable provenance without becoming ACP runtime authority.</p><footer><span>Context ≠ execution queue</span><b>Implemented</b></footer></article>
       </div>
       <div class="evidence-note">
@@ -159,7 +159,7 @@
     <section class="section future" id="future">
       <div class="section-label">06 / Runtime feedback target</div>
       <div class="future-panel">
-        <div><span class="kicker">Target architecture · not yet complete</span><h2>Durable lifecycle.<br><em>Independent convergence.</em></h2><p>Today, a polling dispatcher assigns eligible Workers and PostgreSQL stores commit-ordered events. The next deterministic layers are Goal-level external reconciliation and low-latency, cursor-addressable runtime feedback.</p></div>
+        <div><span class="kicker">Target architecture · feedback remains</span><h2>Durable lifecycle.<br><em>Independent convergence.</em></h2><p>Today, a polling dispatcher assigns eligible Workers, GoalController v1 reconciles bounded planner/action Jobs, and PostgreSQL stores commit-ordered events. The next deterministic layer is low-latency, cursor-addressable runtime feedback.</p></div>
         <div class="event-stream" aria-label="Example structured runtime events">
           <div><time>00:00</time><span class="event-dot green"></span><code>run_started</code><small>worker assigned</small></div>
           <div><time>00:07</time><span class="event-dot blue"></span><code>workspace_prepared</code><small>branch isolated</small></div>
@@ -186,9 +186,9 @@
       <div class="section-label">08 / Roadmap</div>
       <div class="section-heading"><h2>From execution authority to convergence.</h2><p>The runtime protocol remains deployment-neutral; Kubernetes is an optional projection, not the authority model.</p></div>
       <div class="roadmap-track">
-        <article class="current"><span>Now</span><h3>Runtime authority</h3><p>Goals, Jobs, Workers, Runs, atomic claims, leases, fencing, retries, events, enrollment, and polling dispatch.</p></article>
-        <article><span>Next</span><h3>Goal reconciliation</h3><p>Independent observation, generation handling, deterministic Ready conditions, and durable controller leadership.</p></article>
-        <article><span>Then</span><h3>Runtime feedback</h3><p>Low-latency structured status, artifacts, cancellation, and bounded adapter authority.</p></article>
+        <article class="current"><span>Now</span><h3>Runtime authority + reconciliation</h3><p>Goals, Jobs, Workers, Runs, atomic claims, leases, fencing, retries, events, enrollment, polling dispatch, and deterministic GoalController v1.</p></article>
+        <article><span>Next</span><h3>Runtime feedback</h3><p>Low-latency structured status, artifacts, cancellation, and bounded adapter authority.</p></article>
+        <article><span>Then</span><h3>Repository-safe control</h3><p>Automatic repository mutation leases, durable steer/pause/resume/cancel, and macro-task resume.</p></article>
         <article><span>Optional</span><h3>Kubernetes projection</h3><p>Portable protocol concepts represented as Kubernetes resources without making Kubernetes the source of truth.</p></article>
       </div>
     </section>
