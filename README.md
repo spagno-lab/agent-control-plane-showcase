@@ -48,10 +48,13 @@ Then open `http://localhost:8080`.
 ## Deployment
 
 Pushes to `main` configure Pages, upload the repository as an artifact, and
-deploy to the `github-pages` environment. Containerized self-hosted publication
-is **BLOCKED** because this public repository currently has no eligible
-self-hosted runner. A focused hardening change must remain unmerged until Runner
-+ Linux + Docker is available, so publication is not silently disabled.
+deploy to the protected `github-pages` environment. Because this repository is
+public and pull requests may contain untrusted fork code, validation runs on an
+ephemeral GitHub-hosted Linux runner inside a digest-pinned job container with
+read-only contents permission and no secret or private-infrastructure access.
+Pages write/OIDC authority exists only in the trusted push/manual deploy job.
+External actions are commit-pinned; neither job installs host software or
+depends on mutable runner-host tooling.
 
 ## Publication boundary
 

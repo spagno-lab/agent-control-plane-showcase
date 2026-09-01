@@ -12,6 +12,9 @@ It is not runtime authority, deployment state, or an operational audit store.
 - Do not describe Goal-level convergence, clean-room enrollment, a Kubernetes
   operator, or low-latency runtime feedback as live unless independently
   verified evidence exists.
-- **TARGET:** GitHub Actions workload jobs use self-hosted Linux runners and
-  digest-pinned job containers. The current Pages workflow remains
-  GitHub-hosted until this public repository has an eligible self-hosted runner.
+- This public repository treats fork/PR code as untrusted. GitHub Actions uses
+  ephemeral GitHub-hosted Linux runners with digest-pinned job containers and
+  SHA-pinned actions. PR validation has read-only contents permission, receives
+  no production authority and cannot deploy. Pages write/OIDC permission exists
+  only in the trusted push/manual deploy job. A persistent self-hosted runner is
+  not required and must not be introduced merely for cross-repository uniformity.
