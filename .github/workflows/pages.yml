@@ -17,9 +17,7 @@ concurrency:
 jobs:
   policy:
     name: Public contract and CI policy
-    runs-on:
-      - self-hosted
-      - linux
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     container:
       image: python:3.14.7-slim-trixie@sha256:656d12e70054d5fda18a045e2494c96701e9792dd1445f95b3d038df954f57e9
@@ -34,17 +32,11 @@ jobs:
         uses: docker://rhysd/actionlint:1.7.7@sha256:887a259a5a534f3c4f36cb02dca341673c6089431057242cdc931e9f133147e9
         with:
           args: /github/workspace/.github/workflows/pages.yml
-      - name: Return an ownership-neutral workspace
-        if: always()
-        run: chmod -R a+rwX "$GITHUB_WORKSPACE"
-
   deploy:
     name: Deploy immutable static content
-    if: github.event_name != 'pull_request'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     needs: policy
-    runs-on:
-      - self-hosted
-      - linux
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
       contents: read
@@ -69,6 +61,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
-      - name: Return an ownership-neutral workspace
-        if: always()
-        run: chmod -R a+rwX "$GITHUB_WORKSPACE"

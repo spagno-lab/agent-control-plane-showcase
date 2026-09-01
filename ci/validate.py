@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the static publication boundary and container-only CI contract."""
+"""Validate the static publication and public-repository trust boundary."""
 
 from __future__ import annotations
 
@@ -16,11 +16,21 @@ DIGEST = re.compile(r"^[^\s]+@sha256:[0-9a-f]{64}$")
 
 def main() -> None:
     workflow = WORKFLOW.read_text(encoding="utf-8")
-    assert not re.search(r"runs-on:\s*(?:ubuntu|windows|macos)-", workflow)
+    assert "pull_request_target" not in workflow
     assert workflow.count("runs-on:") == 2
+    assert workflow.count("runs-on: ubuntu-24.04") == 2
     assert workflow.count("container:") == 2
-    assert workflow.count("- self-hosted") == 2
-    assert workflow.count("- linux") == 2
+    assert "self-hosted" not in workflow
+    assert "permissions:\n  contents: read" in workflow
+
+    policy, deploy = workflow.split("  deploy:", maxsplit=1)
+    assert "pages: write" not in policy
+    assert "id-token: write" not in policy
+    assert "environment:" not in policy
+    assert deploy.count("pages: write") == 1
+    assert deploy.count("id-token: write") == 1
+    assert "github.event_name == 'push'" in deploy
+    assert "github.event_name == 'workflow_dispatch'" in deploy
     for image in re.findall(r"^\s+image:\s+(\S+)$", workflow, re.MULTILINE):
         assert DIGEST.fullmatch(image), image
         assert ":latest@" not in image
@@ -36,6 +46,9 @@ def main() -> None:
         "npm install -g",
         "/var/run/docker.sock",
         "secrets: inherit",
+        "secrets.",
+        "kubectl ",
+        "vault ",
     )
     assert not any(item in workflow for item in forbidden)
 
