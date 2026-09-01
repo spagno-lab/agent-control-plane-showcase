@@ -33,10 +33,10 @@
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="eyebrow reveal"><span class="status-dot"></span> Public architecture case study</div>
       <h1 class="reveal">Give agents an outcome.<br><em>Make reality converge.</em></h1>
-      <p class="hero-copy reveal">A declarative control plane turns a human goal into bounded, observable work—then verifies the outside world before it calls the job done.</p>
+      <p class="hero-copy reveal">A declarative control plane turns a human goal into bounded, observable work. Database-backed execution authority exists today; independent Goal convergence remains an explicit target.</p>
       <div class="hero-actions reveal">
         <a class="button primary" href="#architecture">Explore the system <span aria-hidden="true">↘</span></a>
-        <a class="button secondary" href="#evidence">See validated use cases</a>
+        <a class="button secondary" href="#evidence">See the evidence boundary</a>
       </div>
       <div class="command-card reveal" aria-label="Example interaction">
         <div class="command-top"><span></span><span></span><span></span><small>human → control plane</small></div>
@@ -44,7 +44,7 @@
         <div class="command-response"><span>✓</span> Resolve → claim → observe → verify → Ready</div>
       </div>
       <div class="signal-strip reveal" aria-label="Core qualities">
-        <span>Declarative intent</span><span>Leased ownership</span><span>External verification</span><span>Durable audit</span>
+        <span>Declarative intent</span><span>Leased ownership</span><span>Fenced mutation</span><span>Durable audit</span>
       </div>
     </section>
 
@@ -66,14 +66,14 @@
       <div class="section-label">02 / Architecture</div>
       <div class="section-heading">
         <h2>A control plane around the intelligence.</h2>
-        <p>The model reasons and executes. Deterministic machinery owns scheduling, leases, lifecycle, truth, and convergence.</p>
+        <p>The model reasons and executes. PostgreSQL-backed machinery owns scheduling, claims, leases, fencing, retries, and lifecycle. A future controller will own independent Goal convergence.</p>
       </div>
-      <div class="architecture-map" role="img" aria-label="Flow from human intent through Goal controller, AgentJob scheduler and worker to external systems, with observation returning to the controller">
+      <div class="architecture-map" role="img" aria-label="Target flow from human intent through Goal reconciliation, AgentJob scheduling and Worker execution to external systems, with observation returning to the controller">
         <div class="map-node human"><small>Intent</small><b>Human</b><span>“Reach this outcome”</span></div>
         <div class="map-arrow" aria-hidden="true">→</div>
         <div class="map-core">
           <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-          <small>Control plane</small><b>Goal controller</b><span>Observe · Compare · Reconcile</span>
+          <small>Target controller</small><b>Goal reconcile</b><span>Observe · Compare · Ready</span>
         </div>
         <div class="map-arrow" aria-hidden="true">→</div>
         <div class="map-stack">
@@ -91,7 +91,7 @@
         <article><span>04</span><h3>Recoverable</h3><p>Leases, checkpoints, and bounded retries let another eligible worker continue.</p></article>
       </div>
       <div class="integrity-panel">
-        <div><span class="kicker">Validated admission safety</span><h3>References are authority, not hints.</h3></div>
+        <div><span class="kicker">Tested admission safety</span><h3>References are authority, not hints.</h3></div>
         <p>A worker must resolve the requested Job in the canonical queue before it acts. When a requested reference was absent, execution failed closed: no invented scope, no inferred approval, and zero external mutation. A versioned Goal and bounded Job were created before work resumed.</p>
       </div>
     </section>
@@ -122,8 +122,8 @@
     </section>
 
     <section class="section loops" id="loops">
-      <div class="section-label">04 / End-to-end flow</div>
-      <h2>One command. Two feedback loops.</h2>
+      <div class="section-label">04 / Target end-to-end flow</div>
+      <h2>One command. Two explicit loops.</h2>
       <div class="loop-grid">
         <article>
           <div class="loop-number">A</div><h3>Machine reconcile loop</h3>
@@ -137,15 +137,15 @@
     </section>
 
     <section class="section evidence" id="evidence">
-      <div class="section-label">05 / Validated patterns</div>
-      <div class="section-heading"><h2>Proven on real work, not a slide deck.</h2><p>The prototype validated the operating model through small, externally observable outcomes.</p></div>
+      <div class="section-label">05 / Evidence boundary</div>
+      <div class="section-heading"><h2>Evidence without status inflation.</h2><p>Execution primitives are tested in source and deployed; Goal-level external convergence and clean-room live enrollment remain unverified targets.</p></div>
       <div class="case-grid">
-        <article><span class="case-index">01</span><div class="case-icon">⌁</div><h3>Minimal-prompt autonomy</h3><p>A Goal-oriented request is enough to retrieve context, select existing work, execute, and verify—without asking the human to shuttle prompts between agents.</p><footer><span>Intent → Ready</span><b>Validated</b></footer></article>
-        <article><span class="case-index">02</span><div class="case-icon">◇</div><h3>Repository bootstrap</h3><p>Public or private repository policy becomes explicit desired state: visibility, default branch, merge behavior, protections, and verification.</p><footer><span>Policy as state</span><b>Validated</b></footer></article>
-        <article><span class="case-index">03</span><div class="case-icon">↻</div><h3>Narrow generation reconcile</h3><p>When intent changes, a new Job addresses only the delta. Prior terminal work stays immutable as operational evidence.</p><footer><span>Smallest safe change</span><b>Validated</b></footer></article>
-        <article><span class="case-index">04</span><div class="case-icon">⊘</div><h3>Fail-closed reference integrity</h3><p>A missing Job cannot be reconstructed from conversation or context. The worker blocks visibly and performs zero external mutation until canonical authority exists.</p><footer><span>Missing reference → no action</span><b>Validated</b></footer></article>
-        <article><span class="case-index">05</span><div class="case-icon">✓</div><h3>Verified no-op reconcile</h3><p>Success does not require manufacturing a change. When authoritative evidence proves reality already satisfies intent, the correct result is zero mutation plus explicit verification.</p><footer><span>Already converged</span><b>Validated</b></footer></article>
-        <article><span class="case-index">06</span><div class="case-icon">⌁</div><h3>Resilient evidence</h3><p>Degraded access stays visible. Independent APIs, bounded logs, probes, and workload state may jointly satisfy the same evidence bar without turning inference into truth.</p><footer><span>Multi-source verification</span><b>Validated</b></footer></article>
+        <article><span class="case-index">01</span><div class="case-icon">⌁</div><h3>Bounded runtime authority</h3><p>Goals, Jobs, Workers and Runs persist in PostgreSQL; assignments, claims and mutations are scope-checked rather than inferred from prompts.</p><footer><span>Intent → bounded work</span><b>Implemented</b></footer></article>
+        <article><span class="case-index">02</span><div class="case-icon">◇</div><h3>Separated identity</h3><p>Worker and Orchestrator authority is explicit. ACP and Memory credentials are independently issued, hashed, scoped, rotated, and revoked.</p><footer><span>ACP bearer ≠ Memory bearer</span><b>Implemented</b></footer></article>
+        <article><span class="case-index">03</span><div class="case-icon">↻</div><h3>Safe reassignment</h3><p>Leases, fencing tokens, checkpoints and deterministic retries reject stale mutation when work moves to a replacement Worker.</p><footer><span>Lease loss → stale rejection</span><b>Tested</b></footer></article>
+        <article><span class="case-index">04</span><div class="case-icon">⊘</div><h3>Fail-closed reference integrity</h3><p>A missing Job cannot be reconstructed from conversation or context. The Worker blocks visibly and performs zero authorized ACP mutation until canonical authority exists.</p><footer><span>Missing reference → no authority</span><b>Tested</b></footer></article>
+        <article><span class="case-index">05</span><div class="case-icon">✓</div><h3>Independent Goal readiness</h3><p>The target controller will re-observe success criteria rather than promote a Worker completion report directly to Goal Ready.</p><footer><span>Worker report ≠ Goal Ready</span><b>Target</b></footer></article>
+        <article><span class="case-index">06</span><div class="case-icon">⌁</div><h3>Durable shared context</h3><p>Memory Service provides versioned canonical keys, CAS, supersession and durable provenance without becoming ACP runtime authority.</p><footer><span>Context ≠ execution queue</span><b>Implemented</b></footer></article>
       </div>
       <div class="evidence-note">
         <div><span class="kicker">Append-only correction</span><h3>A wrong conclusion is corrected, not erased.</h3></div>
@@ -159,7 +159,7 @@
     <section class="section future" id="future">
       <div class="section-label">06 / Runtime feedback target</div>
       <div class="future-panel">
-        <div><span class="kicker">Target architecture · not yet complete</span><h2>Durable lifecycle.<br><em>Live execution signal.</em></h2><p>Today, durable Goal, Job, Run, and event state forms the audit projection. The next deterministic layers will replace interim manual Job relay with event-driven dispatch, then provide low-latency, cursor-addressable runtime feedback.</p></div>
+        <div><span class="kicker">Target architecture · not yet complete</span><h2>Durable lifecycle.<br><em>Independent convergence.</em></h2><p>Today, a polling dispatcher assigns eligible Workers and PostgreSQL stores commit-ordered events. The next deterministic layers are Goal-level external reconciliation and low-latency, cursor-addressable runtime feedback.</p></div>
         <div class="event-stream" aria-label="Example structured runtime events">
           <div><time>00:00</time><span class="event-dot green"></span><code>run_started</code><small>worker assigned</small></div>
           <div><time>00:07</time><span class="event-dot blue"></span><code>workspace_prepared</code><small>branch isolated</small></div>
@@ -175,21 +175,21 @@
       <div class="split"><h2>Autonomy with<br><span>hard edges.</span></h2><div class="safety-list">
         <article><i>01</i><div><h3>Least authority</h3><p>Workers receive only the capabilities required for their bounded Job.</p></div></article>
         <article><i>02</i><div><h3>Leased ownership</h3><p>Claim tokens and expiry prevent stale workers from mutating shared state.</p></div></article>
-        <article><i>03</i><div><h3>Approval gates</h3><p>Risky or irreversible actions wait for explicit human authorization.</p></div></article>
+        <article><i>03</i><div><h3>Privileged enrollment</h3><p>Anonymous enrollment is Worker-only; Orchestrators require explicit, bounded authorization.</p></div></article>
         <article><i>04</i><div><h3>Publication boundary</h3><p>Public material is a sanitized projection—not a mirror of operational systems.</p></div></article>
-        <article><i>05</i><div><h3>Operational contract</h3><p>Capabilities, audit mode, reversible-change authority, protected control paths, approvals, verification, and rollback are explicit Job fields.</p></div></article>
-        <article><i>06</i><div><h3>Deterministic workspaces</h3><p>Each Job runs in an isolated, reproducible repository workspace on its own branch, so concurrent work cannot collide and terminal Job history stays immutable.</p></div></article>
+        <article><i>05</i><div><h3>Separate context authority</h3><p>Memory Service owns durable semantic context, never claims, leases, retries, or credentials for ACP.</p></div></article>
+        <article><i>06</i><div><h3>Repository discipline</h3><p>One writer per repository and isolated branches are current operating policy; ACP does not yet enforce a repository mutation lease.</p></div></article>
       </div></div>
     </section>
 
     <section class="section roadmap" id="roadmap">
       <div class="section-label">08 / Roadmap</div>
-      <div class="section-heading"><h2>From functional prototype to operator.</h2><p>The concepts map directly onto a Kubernetes-native control plane without changing the human interaction model.</p></div>
+      <div class="section-heading"><h2>From execution authority to convergence.</h2><p>The runtime protocol remains deployment-neutral; Kubernetes is an optional projection, not the authority model.</p></div>
       <div class="roadmap-track">
-        <article class="current"><span>Now</span><h3>Functional prototype</h3><p>Goals, Jobs, Workers, leases, events, and external verification.</p></article>
-        <article><span>Next</span><h3>Event-driven dispatcher</h3><p>Deterministic admission, wake-up, claim context, and automatic worker launch.</p></article>
-        <article><span>Then</span><h3>Runtime Feedback Bridge</h3><p>Timestamped structured events, status, tail, artifacts, and cancellation.</p></article>
-        <article><span>Later</span><h3>Kubernetes Operator</h3><p>Goal, AgentJob, and Worker resources with level-based controllers.</p></article>
+        <article class="current"><span>Now</span><h3>Runtime authority</h3><p>Goals, Jobs, Workers, Runs, atomic claims, leases, fencing, retries, events, enrollment, and polling dispatch.</p></article>
+        <article><span>Next</span><h3>Goal reconciliation</h3><p>Independent observation, generation handling, deterministic Ready conditions, and durable controller leadership.</p></article>
+        <article><span>Then</span><h3>Runtime feedback</h3><p>Low-latency structured status, artifacts, cancellation, and bounded adapter authority.</p></article>
+        <article><span>Optional</span><h3>Kubernetes projection</h3><p>Portable protocol concepts represented as Kubernetes resources without making Kubernetes the source of truth.</p></article>
       </div>
     </section>
 
