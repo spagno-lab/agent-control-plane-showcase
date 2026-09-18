@@ -17,7 +17,7 @@ concurrency:
 jobs:
   policy:
     name: Public contract and CI policy
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 10
     container:
       image: python:3.14.7-slim-trixie@sha256:cad9a2c871761c413caa6fdd6441c783451e740a48aaeba60ae62a8b53525ef6
@@ -36,7 +36,7 @@ jobs:
     name: Deploy immutable static content
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     needs: policy
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 15
     permissions:
       contents: read
