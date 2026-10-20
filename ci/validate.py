@@ -18,7 +18,7 @@ def main() -> None:
     workflow = WORKFLOW.read_text(encoding="utf-8")
     assert "pull_request_target" not in workflow
     assert workflow.count("runs-on:") == 2
-    assert workflow.count("runs-on: ubuntu-24.04") == 2
+    assert workflow.count("runs-on: ubuntu-26.04") == 2
     assert workflow.count("container:") == 2
     assert "self-hosted" not in workflow
     assert "permissions:\n  contents: read" in workflow
