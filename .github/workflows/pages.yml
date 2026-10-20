@@ -17,7 +17,7 @@ concurrency:
 jobs:
   policy:
     name: Public contract and CI policy
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 10
     container:
       image: python:3.15.0-slim-trixie@sha256:2da676046630d7bf14c6764ae1143dc7fa0377a53f94bf5a642f0b214aca5bce
@@ -31,12 +31,12 @@ jobs:
       - name: Validate Actions syntax in an isolated container action
         uses: docker://rhysd/actionlint:1.7.12@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
         with:
-          args: /github/workspace/.github/workflows/pages.yml
+          args: -config-file /github/workspace/.github/actionlint.yaml /github/workspace/.github/workflows/pages.yml
   deploy:
     name: Deploy immutable static content
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     needs: policy
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 15
     permissions:
       contents: read
