@@ -1,0 +1,6 @@
+# actionlint (<= 1.7.12) does not yet know the GitHub-hosted ubuntu-26.04
+# label. Allowlist exactly that label for linting only; the runner pin itself
+# is enforced by ci/validate.py. Remove once actionlint ships the label.
+self-hosted-runner:
+  labels:
+    - ubuntu-26.04
